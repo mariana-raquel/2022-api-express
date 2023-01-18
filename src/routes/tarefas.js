@@ -1,3 +1,5 @@
+const repositorio = require("../db/tarefas").repositorio;
+
 let tarefas = [
 	{
 		id: 1,
@@ -68,12 +70,15 @@ exports.delete = (req, res) => {
 	}
 };
 
-exports.get = (req, res) =>
-	res.json({
-		status: "OK",
-		message: "Tarefas",
-		data: tarefas,
-	});
+exports.get = (req, res) => {
+	repositorio.lerTodos( t => 
+		res.json({
+			status: "OK",
+			message: "Tarefas",
+			data: t,
+		})
+	);
+}
 exports.get_by_id = handle_by_id;
 
 exports.post = (req, res) => {
