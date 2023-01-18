@@ -5,3 +5,4 @@ yarn.lock
 
 # libs
 node_modules
+db.sqlite
